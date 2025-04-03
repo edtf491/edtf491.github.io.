@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Pictures - Личный кабинет</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Добавляем стили для сообщений */
+        .auth-message {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .auth-message h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .auth-message p {
+            margin-bottom: 20px;
+            color: #7f8c8d;
+        }
+        
+        .auth-message .auth-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .auth-message .auth-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <span>Game Pictures</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="content.html">Просмотр</a></li>
+                <li><a href="profile.html" class="active">Личный кабинет</a></li>
+                <li><a href="support.html">Тех. поддержка</a></li>
+                <li><a href="ads.html">Размещение рекламы</a></li>
+            </ul>
+        </nav>
+        <div class="auth">
+            <a href="login.html" class="login-btn">Вход</a>
+            <a href="register.html" class="register-btn">Регистрация</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="section-title">
+            <h2>Личный кабинет</h2>
+            <p>Управляйте своим профилем и контентом</p>
+        </div>
+
+        <!-- Блок для незарегистрированных пользователей -->
+        <div class="auth-message" id="not-registered-message">
+            <h3>Вы ещё не зарегистрированы</h3>
+            <p>Зарегистрируйтесь, чтобы получить доступ ко всем возможностям личного кабинета</p>
+            <a href="register.html" class="auth-btn">Зарегистрироваться</a>
+        </div>
+
+        <!-- Блок для зарегистрированных пользователей (изначально скрыт) -->
+        <div class="form-container" id="registered-content" style="display: none;">
+            <div class="profile-header">
+                <img src="https://source.unsplash.com/random/150x150?avatar" alt="Аватар" class="profile-avatar">
+                <h3>ИгровойЭксперт</h3>
+                <p>Уровень: 15</p>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" value="ИгровойЭксперт">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="user@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Новый пароль</label>
+                    <input type="password" id="password" placeholder="Введите новый пароль">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">О себе</label>
+                    <textarea id="bio">Люблю играть и делиться скриншотами!</textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Сохранить изменения</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Game Pictures. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Простая логика для демонстрации (в реальном проекте нужно проверять авторизацию на сервере)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем, есть ли в URL параметр logged_in (для демонстрации)
+            const urlParams = new URLSearchParams(window.location.search);
+            const isLoggedIn = urlParams.has('logged_in');
+            
+            if(isLoggedIn) {
+                document.getElementById('not-registered-message').style.display = 'none';
+                document.getElementById('registered-content').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
